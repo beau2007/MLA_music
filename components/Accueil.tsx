@@ -1,6 +1,7 @@
 // app/page.tsx
 'use client'
 
+import Link from 'next/link' // Import de Link pour la navigation Next.js
 import { 
   Music, 
   GraduationCap, 
@@ -16,10 +17,9 @@ import {
   Heart
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
-import Footer from './Footer'
 
 export default function HomePage() {
   return (
@@ -49,15 +49,28 @@ export default function HomePage() {
                 Que vous soyez grand débutant ou musicien confirmé, apprenez le piano, la guitare, le chant ou la MAO à votre rythme avec des professeurs diplômés et passionnés.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-                <Button className="bg-amber-500 text-slate-950 hover:bg-amber-400 font-bold h-14 px-8 text-base rounded-xl shadow-lg shadow-amber-500/10 gap-2 group">
-                  Réserver un cours d'essai
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-                <Button variant="outline" className="bg-transparent border-slate-700 text-white hover:bg-slate-800 h-14 px-8 text-base rounded-xl gap-2">
-                  <Play className="w-4 h-4 fill-white" /> Découvrir l'école
-                </Button>
+        <div className="container-custom">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center">
+                <Play className="w-6 h-6 text-gold" />
               </div>
+              <div>
+                <p className="font-semibold text-white text-sm">
+                  Découvrez notre bande-annonce
+                </p>
+                <p className="text-sm text-slate-400">
+                  Plongez dans l'univers de Music Learn Académique
+                </p>
+              </div>
+            </div>
+                <Button asChild variant="outline" className="bg-amber-600 border-slate-700 text-white hover:bg-slate-400 h-14 px-8 text-base rounded-xl gap-2">
+                  <Link href="/presentation">
+                    <Play className="w-4 h-4 fill-white" /> Découvrir l'école
+                  </Link>
+                </Button>
+          </div>
+        </div>
 
               {/* Trust Badge */}
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 pt-8 text-slate-400 text-sm">
@@ -88,7 +101,7 @@ export default function HomePage() {
                     <Star className="w-5 h-5 fill-amber-500" />
                   </div>
                   <div>
-                    <div className="text-sm font-bold text-slate-900">disponibilté</div>
+                    <div className="text-sm font-bold text-slate-900">disponibilité</div>
                     <p className="text-xs font-medium text-slate-500">selon votre programme</p>
                   </div>
                 </div>
@@ -98,7 +111,7 @@ export default function HomePage() {
         </div>
       </section>
 
-{/* 2. STATS BAR */}
+      {/* 2. STATS BAR */}
       <section className="bg-white border-y border-slate-200/60 py-8 relative z-20 -mt-1">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -136,12 +149,12 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { title: "Piano classique & Jazz", desc: "Apprenez la rigueur des grands classiques ou la liberté de l'improvisation jazz.", img: "https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=400&h=250&fit=crop", count: "4 professeurs" },
-              { title: "Guitare & Basse", desc: "Électrique, acoustique ou folk. Maîtrisez les accords, les riffs et les solos de vos morceaux favoris.", img: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=400&h=250&fit=crop", count: "4 professeurs" },
-              { title: "Chant & Coaching Vocal", desc: "Trouvez votre voix, maîtrisez votre souffle et gagnez en aisance scénique.", img: "https://images.squarespace-cdn.com/content/v1/601e88f1beed354b4e2f0a42/ede80e86-0c3b-43d0-829e-964b4cb28094/2.png?format=1500w", count: "1 professeur" },
-              { title: "Violon & flute", desc: "Développez votre sens du rythme, votre coordination et votre groove.", img: "https://ecoledemusiquejocelynelaberge.com/wp-content/uploads/2014/09/cme-flute-02.jpg", count: "2 professeur" },
-              { title: "Production & MAO", desc: "Composez, enregistrez et mixez vos propres productions sur Ableton ou Logic Pro.", img: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=400&h=250&fit=crop", count: "2 professeurs" },
-              { title: "Éveil Musical", desc: "Des ateliers ludiques adaptés pour initier les plus petits (4-6 ans) à la magie des sons.", img: "https://th.bing.com/th/id/R.4c6cc9519159fa6a7cb927ecc2272e5b?rik=XYb0Jwb8UqO9bA&riu=http%3a%2f%2fdrop.philharmoniedeparis.fr%2fcontent%2fGPM%2f01AppEI%2fillustration-%c3%a9veil-musical.jpg&ehk=RhvqsQbRqCnRgp8YFiiesxO5jugRaRHBLvh7%2fFa7cVw%3d&risl=&pid=ImgRaw&r=0", count: "2 animateurs" },
+              { title: "Piano classique & Jazz", desc: "Apprenez la rigueur des grands classiques ou la liberté de l'improvisation jazz.", img: "https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=400&h=250&fit=crop", count: "4 professeurs", slug: "piano" },
+              { title: "Guitare & Basse", desc: "Électrique, acoustique ou folk. Maîtrisez les accords, les riffs et les solos de vos morceaux favoris.", img: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=400&h=250&fit=crop", count: "4 professeurs", slug: "guitare" },
+              { title: "Chant & Coaching Vocal", desc: "Trouvez votre voix, maîtrisez votre souffle et gagnez en aisance scénique.", img: "https://images.squarespace-cdn.com/content/v1/601e88f1beed354b4e2f0a42/ede80e86-0c3b-43d0-829e-964b4cb28094/2.png?format=1500w", count: "1 professeur", slug: "chant" },
+              { title: "Violon & flûte", desc: "Développez votre sens du rythme, votre coordination et votre groove.", img: "https://ecoledemusiquejocelynelaberge.com/wp-content/uploads/2014/09/cme-flute-02.jpg", count: "2 professeurs", slug: "violon-flute" },
+              { title: "Production & MAO", desc: "Composez, enregistrez et mixez vos propres productions sur Ableton ou Logic Pro.", img: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=400&h=250&fit=crop", count: "2 professeurs", slug: "mao" },
+              { title: "Éveil Musical", desc: "Des ateliers ludiques adaptés pour initier les plus petits (4-6 ans) à la magie des sons.", img: "https://th.bing.com/th/id/R.4c6cc9519159fa6a7cb927ecc2272e5b?rik=XYb0Jwb8UqO9bA&riu=http%3a%2f%2fdrop.philharmoniedeparis.fr%2fcontent%2fGPM%2f01AppEI%2fillustration-%c3%a9veil-musical.jpg&ehk=RhvqsQbRqCnRgp8YFiiesxO5jugRaRHBLvh7%2fFa7cVw%3d&risl=&pid=ImgRaw&r=0", count: "2 animateurs", slug: "eveil-musical" },
             ].map((inst, index) => (
               <Card key={index} className="group border-slate-200/80 hover:border-amber-200 hover:shadow-xl transition-all duration-300 flex flex-col h-full bg-white overflow-hidden">
                 <div className="relative h-48 overflow-hidden bg-slate-900">
@@ -162,8 +175,11 @@ export default function HomePage() {
                 </CardContent>
                 <Separator className="bg-slate-100" />
                 <div className="px-6 py-4 bg-slate-50/50 flex justify-end">
-                  <Button variant="ghost" size="sm" className="text-slate-900 font-bold text-xs p-0 gap-1 group-hover:translate-x-1 transition-transform">
-                    EN SAVOIR PLUS <ArrowRight className="w-3.5 h-3.5" />
+                  {/* Redirection dynamique vers la page spécifique de la formation */}
+                  <Button asChild variant="ghost" size="sm" className="text-slate-900 font-bold text-xs p-0 gap-1 group-hover:translate-x-1 transition-transform">
+                    <Link href={`/formations/${inst.slug}`}>
+                      EN SAVOIR PLUS <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
                   </Button>
                 </div>
               </Card>
@@ -296,11 +312,18 @@ export default function HomePage() {
                 Profitez d'un premier cours de découverte de 30 minutes entièrement gratuit et sans engagement pour rencontrer votre futur professeur.
               </p>
               <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
-                <Button className="bg-amber-500 text-slate-950 hover:bg-amber-400 font-bold h-14 px-8 rounded-xl text-base shadow-lg shadow-amber-500/10">
-                  S'inscrire au cours d'essai gratuit
+                {/* Bouton CTA Principal vers l'inscription */}
+                <Button asChild className="bg-amber-500 text-slate-950 hover:bg-amber-400 font-bold h-14 px-8 rounded-xl text-base shadow-lg shadow-amber-500/10">
+                  <Link href="/contact">
+                    S'inscrire au cours d'essai gratuit
+                  </Link>
                 </Button>
-                <Button variant="outline" className="bg-transparent border-slate-700 text-white hover:bg-slate-800 h-14 px-8 rounded-xl text-base">
-                  Nous contacter
+                
+                {/* Bouton de contact secondaire */}
+                <Button asChild variant="outline" className="bg-transparent border-slate-700 text-white hover:bg-slate-800 h-14 px-8 rounded-xl text-base">
+                  <Link href="/contact">
+                    Nous contacter
+                  </Link>
                 </Button>
               </div>
             </div>
